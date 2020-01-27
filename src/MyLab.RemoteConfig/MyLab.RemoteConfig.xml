@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyLab.RemoteConfig</name>
+    </assembly>
+    <members>
+        <member name="T:MyLab.RemoteConfig.IConfigJsonProvider">
+            <summary>
+            Defines remote configuration json provider
+            </summary>
+        </member>
+        <member name="M:MyLab.RemoteConfig.IConfigJsonProvider.Provide">
+            <summary>
+            Provides binary json configuration
+            </summary>
+        </member>
+        <member name="T:MyLab.RemoteConfig.RemoteConfigConnectionParameters">
+            <summary>
+            Contains configuration server connection parameters
+            </summary>
+        </member>
+        <member name="P:MyLab.RemoteConfig.RemoteConfigConnectionParameters.Url">
+            <summary>
+            Server URL
+            </summary>
+        </member>
+        <member name="P:MyLab.RemoteConfig.RemoteConfigConnectionParameters.User">
+            <summary>
+            User id / Login
+            </summary>
+        </member>
+        <member name="P:MyLab.RemoteConfig.RemoteConfigConnectionParameters.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="T:MyLab.RemoteConfig.ConfigurationExtensions">
+            <summary>
+            Extends configuration system
+            </summary>
+        </member>
+        <member name="M:MyLab.RemoteConfig.ConfigurationExtensions.AddRemoteConfiguration(Microsoft.Extensions.Configuration.IConfigurationBuilder,MyLab.RemoteConfig.RemoteConfigConnectionParameters)">
+            <summary>
+            Inject remote configuration source into configuration system
+            </summary>
+        </member>
+        <member name="T:MyLab.RemoteConfig.WebHostBuilderExtensions">
+            <summary>
+            Extends <see cref="T:Microsoft.AspNetCore.Hosting.IWebHostBuilder"/>
+            </summary>
+        </member>
+        <member name="M:MyLab.RemoteConfig.WebHostBuilderExtensions.AddRemoteConfiguration(Microsoft.AspNetCore.Hosting.IWebHostBuilder)">
+            <summary>
+            Adds remote configuration from MyLab.ConfigServer
+            </summary>
+        </member>
+        <member name="M:MyLab.RemoteConfig.WebHostBuilderExtensions.LoadRemoteConfigConnectionFromEnvironmentVars(Microsoft.AspNetCore.Hosting.IWebHostBuilder)">
+            <summary>
+            Adds remote configuration from MyLab.ConfigServer with connection parameters from environment variables
+            </summary>
+        </member>
+    </members>
+</doc>
