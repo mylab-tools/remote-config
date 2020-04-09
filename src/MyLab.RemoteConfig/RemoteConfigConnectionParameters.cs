@@ -10,6 +10,10 @@
         /// </summary>
         public string Url { get; set; }
         /// <summary>
+        /// Server Host
+        /// </summary>
+        public string Host { get; set; }
+        /// <summary>
         /// User id / Login
         /// </summary>
         public string User { get; set; }

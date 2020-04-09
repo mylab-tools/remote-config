@@ -24,6 +24,11 @@
             Server URL
             </summary>
         </member>
+        <member name="P:MyLab.RemoteConfig.RemoteConfigConnectionParameters.Host">
+            <summary>
+            Server Host
+            </summary>
+        </member>
         <member name="P:MyLab.RemoteConfig.RemoteConfigConnectionParameters.User">
             <summary>
             User id / Login
