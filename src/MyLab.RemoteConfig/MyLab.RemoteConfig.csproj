@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -11,6 +11,9 @@
     <RepositoryUrl>https://github.com/ozzy-ext-mylab/remote-config.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>c# config</PackageTags>
+    <Version>1.1.2</Version>
+    <AssemblyVersion>1.1.2.0904</AssemblyVersion>
+    <FileVersion>1.1.2.0904</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

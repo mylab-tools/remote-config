@@ -26,9 +26,11 @@ namespace MyLab.RemoteConfig
 
         public byte[] Provide()
         {
+            var baseAddress = _connectionParameters.Url ?? $"http://{_connectionParameters.Host}/api/config";
+
             var client = new WebClient
             {
-                BaseAddress = _connectionParameters.Url
+                BaseAddress = baseAddress
             };
 
             string credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(
@@ -37,7 +39,7 @@ namespace MyLab.RemoteConfig
 
             try
             {
-                return client.DownloadData("/api/config");
+                return client.DownloadData("");
             }
             catch (WebException e)
             {

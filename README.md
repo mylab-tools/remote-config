@@ -41,11 +41,39 @@ public class Program
 {
   "RemoteConfig": {
     "Url": "http://localhost",
+    "Host": "localhost",
     "User": "foo",
     "Password": "foo-pass"
   }
 }
 ```
+
+**Важно!**
+
+Должен быть указан хотя бы один из параметров: `Url` или `Host`. Если указан `Url`, то используется как есть в качестве адреса. В противном случае испольщуется параметр `Host` для построения адреса по шаблону 
+
+```
+http://{host}/api/condig
+```
+
+Например для конфигурации
+
+```json
+{
+  "RemoteConfig": {
+    "Host": "hot.com:3434",
+    "User": "foo",
+    "Password": "foo-pass"
+  }
+}
+```
+
+результирующий адрес будет иметь вид
+
+```
+http://hot.com:3434/api/condig
+```
+
 
 #### Переменные окружения
 
@@ -53,7 +81,7 @@ public class Program
 
 Для этого необходимо указать переменные окружения:
 
-* MYLAB_REMOTECONFIG__URL
+* MYLAB_REMOTECONFIG\__URL или  MYLAB_REMOTECONFIG__HOST
 * MYLAB_REMOTECONFIG__USER
 * MYLAB_REMOTECONFIG__PASSWORD
 
@@ -66,6 +94,8 @@ public class Program
         {
             CreateWebHostBuilder(args).Build().Run();
         }
+```
+```C#
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
