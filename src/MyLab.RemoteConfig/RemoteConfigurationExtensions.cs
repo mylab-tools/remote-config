@@ -36,7 +36,7 @@ namespace MyLab.RemoteConfig
         /// <summary>
         /// Adds remote configuration from MyLab.ConfigServer
         /// </summary>
-        public static IWebHostBuilder AddRemoteConfiguration(this IWebHostBuilder webHostBuilder)
+        public static IWebHostBuilder AddRemoteConfiguration(this IWebHostBuilder webHostBuilder, bool optional = false)
         {
             webHostBuilder.ConfigureAppConfiguration((ctx, cb) =>
             {
@@ -44,7 +44,7 @@ namespace MyLab.RemoteConfig
                 var remoteConnectionParameters = new RemoteConfigConnectionParameters();
                 configuration.GetSection("RemoteConfig").Bind(remoteConnectionParameters);
 
-                AddRemoteConfiguration(cb, remoteConnectionParameters);
+                AddRemoteConfiguration(cb, remoteConnectionParameters, optional);
             });
             return webHostBuilder;
         }
@@ -63,12 +63,16 @@ namespace MyLab.RemoteConfig
 
         static void AddRemoteConfiguration(
             IConfigurationBuilder configuration,
-            RemoteConfigConnectionParameters connectionParameters)
+            RemoteConfigConnectionParameters connectionParameters,
+            bool optional)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
             if (connectionParameters == null) throw new ArgumentNullException(nameof(connectionParameters));
 
-            var jsonProvider = new DefaultConfigJsonProvider(connectionParameters);
+            var jsonProvider = new DefaultConfigJsonProvider(connectionParameters)
+            {
+                ThrowIfAddressNotSpecified = !optional
+            };
 
             configuration.Add(new RemoteConfigSource(jsonProvider));
         }

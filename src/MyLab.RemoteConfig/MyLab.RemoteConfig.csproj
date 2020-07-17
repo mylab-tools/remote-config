@@ -6,14 +6,14 @@
     <Authors>Andrey O.</Authors>
     <Company>Andrey O.</Company>
     <Description>Loads configuration from MyLab.ConfigServer</Description>
-    <Copyright>Copyright (c) 2019 Andrey Osintsev &lt;ozzy.ext@gmail.com&gt;</Copyright>
+    <Copyright>Copyright (c) 2020 Andrey Osintsev &lt;ozzy.ext@gmail.com&gt;</Copyright>
     <PackageProjectUrl>https://github.com/ozzy-ext-mylab/remote-config</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ozzy-ext-mylab/remote-config.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>c# config</PackageTags>
-    <Version>1.1.2</Version>
-    <AssemblyVersion>1.1.2.0904</AssemblyVersion>
-    <FileVersion>1.1.2.0904</FileVersion>
+    <Version>1.2.2</Version>
+    <AssemblyVersion>1.2.2.1707</AssemblyVersion>
+    <FileVersion>1.2.2.1707</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

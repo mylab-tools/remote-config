@@ -19,6 +19,8 @@ namespace MyLab.RemoteConfig
     {
         private readonly RemoteConfigConnectionParameters _connectionParameters;
 
+        public bool ThrowIfAddressNotSpecified { get; set; } = true;
+
         public DefaultConfigJsonProvider(RemoteConfigConnectionParameters connectionParameters)
         {
             _connectionParameters = connectionParameters;
@@ -26,6 +28,16 @@ namespace MyLab.RemoteConfig
 
         public byte[] Provide()
         {
+            if (string.IsNullOrEmpty(_connectionParameters.Url) && string.IsNullOrEmpty(_connectionParameters.Host))
+            {
+                if(ThrowIfAddressNotSpecified)
+                    throw new InvalidOperationException("Config server address not specified");
+                else
+                {
+                    return null;
+                }
+            }
+
             var baseAddress = _connectionParameters.Url ?? $"http://{_connectionParameters.Host}/api/config";
 
             var client = new WebClient

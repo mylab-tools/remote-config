@@ -18,9 +18,12 @@ namespace MyLab.RemoteConfig
         {
             var config = _configJsonProvider.Provide();
 
-            using(var mem = new MemoryStream(config))
+            if (config != null)
             {
-                Data = JsonConfigurationFileParser.Parse(mem);
+                using (var mem = new MemoryStream(config))
+                {
+                    Data = JsonConfigurationFileParser.Parse(mem);
+                }
             }
         }
     }
