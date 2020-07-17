@@ -54,7 +54,7 @@
             Extends <see cref="T:Microsoft.AspNetCore.Hosting.IWebHostBuilder"/>
             </summary>
         </member>
-        <member name="M:MyLab.RemoteConfig.WebHostBuilderExtensions.AddRemoteConfiguration(Microsoft.AspNetCore.Hosting.IWebHostBuilder)">
+        <member name="M:MyLab.RemoteConfig.WebHostBuilderExtensions.AddRemoteConfiguration(Microsoft.AspNetCore.Hosting.IWebHostBuilder,System.Boolean)">
             <summary>
             Adds remote configuration from MyLab.ConfigServer
             </summary>
