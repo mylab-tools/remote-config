@@ -31,6 +31,18 @@ public class Program
 }
 ```
 
+### Опциональность
+
+Есть поддержка случая, когда удалённый конфиг - опциональная возможность. В этом случае, нужно указать параметр `optional: true`:
+
+```C#
+WebHost.CreateDefaultBuilder(args)
+    .AddRemoteConfiguration(optional:true) //<----- here
+    .UseStartup<Startup>();
+```
+
+По умолчанию, при использовании удалённой конфигурации, она обязательная.
+
 ### Конфигурирование
 
 #### app.settings
