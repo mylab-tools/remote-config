@@ -2,6 +2,7 @@
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace MyLab.RemoteConfig
 {
@@ -44,7 +45,7 @@ namespace MyLab.RemoteConfig
                 var remoteConnectionParameters = new RemoteConfigConnectionParameters();
                 configuration.GetSection("RemoteConfig").Bind(remoteConnectionParameters);
 
-                AddRemoteConfiguration(cb, remoteConnectionParameters, optional);
+                RemoteConfigAdder.AddRemoteConfiguration(cb, remoteConnectionParameters, optional);
             });
             return webHostBuilder;
         }
@@ -60,8 +61,45 @@ namespace MyLab.RemoteConfig
             });
             return webHostBuilder;
         }
+    }
 
-        static void AddRemoteConfiguration(
+    /// <summary>
+    /// Extends <see cref="IHostBuilder"/>
+    /// </summary>
+    public static class HostBuilderExtensions
+    {
+        /// <summary>
+        /// Adds remote configuration from MyLab.ConfigServer
+        /// </summary>
+        public static IHostBuilder AddRemoteConfiguration(this IHostBuilder hostBuilder, bool optional = false)
+        {
+            hostBuilder.ConfigureAppConfiguration((ctx, cb) =>
+            {
+                var configuration = cb.Build();
+                var remoteConnectionParameters = new RemoteConfigConnectionParameters();
+                configuration.GetSection("RemoteConfig").Bind(remoteConnectionParameters);
+
+                RemoteConfigAdder.AddRemoteConfiguration(cb, remoteConnectionParameters, optional);
+            });
+            return hostBuilder;
+        }
+
+        /// <summary>
+        /// Adds remote configuration from MyLab.ConfigServer with connection parameters from environment variables
+        /// </summary>
+        public static IHostBuilder LoadRemoteConfigConnectionFromEnvironmentVars(this IHostBuilder hostBuilder)
+        {
+            hostBuilder.ConfigureAppConfiguration((ctx, cb) =>
+            {
+                cb.AddEnvironmentVariables("MYLAB_");
+            });
+            return hostBuilder;
+        }
+    }
+
+    static class RemoteConfigAdder
+    {
+        public static void AddRemoteConfiguration(
             IConfigurationBuilder configuration,
             RemoteConfigConnectionParameters connectionParameters,
             bool optional)

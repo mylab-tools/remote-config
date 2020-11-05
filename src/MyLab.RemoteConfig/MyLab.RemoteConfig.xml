@@ -64,5 +64,20 @@
             Adds remote configuration from MyLab.ConfigServer with connection parameters from environment variables
             </summary>
         </member>
+        <member name="T:MyLab.RemoteConfig.HostBuilderExtensions">
+            <summary>
+            Extends <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>
+            </summary>
+        </member>
+        <member name="M:MyLab.RemoteConfig.HostBuilderExtensions.AddRemoteConfiguration(Microsoft.Extensions.Hosting.IHostBuilder,System.Boolean)">
+            <summary>
+            Adds remote configuration from MyLab.ConfigServer
+            </summary>
+        </member>
+        <member name="M:MyLab.RemoteConfig.HostBuilderExtensions.LoadRemoteConfigConnectionFromEnvironmentVars(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Adds remote configuration from MyLab.ConfigServer with connection parameters from environment variables
+            </summary>
+        </member>
     </members>
 </doc>
